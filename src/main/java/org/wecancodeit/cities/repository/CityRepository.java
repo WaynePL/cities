@@ -5,4 +5,6 @@ import org.wecancodeit.cities.model.City;
 
 public interface CityRepository extends CrudRepository<City, Long> {
 
+	City findByCityNameIgnoreCase(String name);
+
 }

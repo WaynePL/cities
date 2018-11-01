@@ -19,7 +19,8 @@ public class State {
 	private String motto;
 	private String fish;
 	private String citiesUrl;
-	@OneToMany(mappedBy = "state")
+	
+	@OneToMany(mappedBy = "stateEntity")
 	private List<City> city = new ArrayList<>();
 
 	public State(String name, String abbreviation, String motto, String fish, String citiesUrl) {

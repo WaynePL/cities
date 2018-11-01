@@ -5,35 +5,40 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class City {
 
 	@Id
 	@GeneratedValue
 	private Long Id;
-	private String name;
+	private String cityName;
 	private String population;
+	
+	@JsonIgnore
 	@ManyToOne
-	private State state;
+	private State stateEntity;
 
 	public City() {
 	}
 
-	public City(String name, String population) {
-		this.name = name;
+	public City(String name, String population, State stateEntity) {
+		this.cityName = name;
 		this.population = population;
+		this.stateEntity = stateEntity;
 	}
 
-	public State getState() {
-		return state;
+	public State getStateEntity() {
+		return stateEntity;
 	}
 
 	public Long getId() {
 		return Id;
 	}
 
-	public String getName() {
-		return name;
+	public String getCityName() {
+		return cityName;
 	}
 
 	public String getPopulation() {
