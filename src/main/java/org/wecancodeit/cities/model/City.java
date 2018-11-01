@@ -3,7 +3,6 @@ package org.wecancodeit.cities.model;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 
 @Entity
 public class City {
@@ -11,20 +10,20 @@ public class City {
 	@Id
 	@GeneratedValue
 	private Long Id;
-	private String name;
+	private String cityName;
 	private String population;
-	@ManyToOne
-	private State state;
+	private String state;
 
 	public City() {
 	}
 
-	public City(String name, String population) {
-		this.name = name;
+	public City(String name, String population, String state) {
+		this.cityName = name;
 		this.population = population;
+		this.state = state;
 	}
 
-	public State getState() {
+	public String getState() {
 		return state;
 	}
 
@@ -32,8 +31,8 @@ public class City {
 		return Id;
 	}
 
-	public String getName() {
-		return name;
+	public String getCityName() {
+		return cityName;
 	}
 
 	public String getPopulation() {

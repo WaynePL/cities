@@ -1,12 +1,8 @@
 package org.wecancodeit.cities.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 
 @Entity
 public class State {
@@ -19,8 +15,6 @@ public class State {
 	private String motto;
 	private String fish;
 	private String citiesUrl;
-	@OneToMany(mappedBy = "state")
-	private List<City> city = new ArrayList<>();
 
 	public State(String name, String abbreviation, String motto, String fish, String citiesUrl) {
 		this.name = name;
@@ -31,10 +25,6 @@ public class State {
 	}
 
 	public State() {
-	}
-
-	public List<City> getCity() {
-		return city;
 	}
 
 	public Long getId() {
