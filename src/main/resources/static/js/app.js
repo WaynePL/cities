@@ -13,7 +13,17 @@ fetch(`/api/states/${window.location.pathname.split('/')[2]}`)
 	.then(res => res.json())
 	.then(data => {
 		const body = document.body
-		const pageTitle = `<h1>${data.name}</h1>`
+		const pageContent = `<h1>${data.name}</h1>
+		<h2>${data.abbreviation}</h2>
+		<p>Motto: ${data.motto}</p>
+		<p>Fish: ${data.fish}</p>
+		`
+		const p = document.createElement('p');
+		p.innerText = 'Cities: '
+		data.city.forEach(place => {
+			p.innerText += place.cityName + ', ';
+		})
 		
-		body.innerHTML = pageTitle
+		
+		body.innerHTML += pageContent + p.innerHTML
 	})

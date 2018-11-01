@@ -39,8 +39,8 @@ public class CitiesController {
 	
 	@PostMapping("/add-city")
 	public String addCity(String name, String population, String stateName, Model model) {
-		System.out.println(stateName);
-		cityRepo.save(new City(name, population, stateName));
+		State stateEntity = stateRepo.findByNameIgnoreCase(stateName);
+		cityRepo.save(new City(name, population, stateEntity));
 		return "redirect:/";
 	}
 }

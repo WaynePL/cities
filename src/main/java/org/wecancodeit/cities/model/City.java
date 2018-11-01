@@ -3,6 +3,9 @@ package org.wecancodeit.cities.model;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class City {
@@ -12,19 +15,22 @@ public class City {
 	private Long Id;
 	private String cityName;
 	private String population;
-	private String state;
+	
+	@JsonIgnore
+	@ManyToOne
+	private State stateEntity;
 
 	public City() {
 	}
 
-	public City(String name, String population, String state) {
+	public City(String name, String population, State stateEntity) {
 		this.cityName = name;
 		this.population = population;
-		this.state = state;
+		this.stateEntity = stateEntity;
 	}
 
-	public String getState() {
-		return state;
+	public State getStateEntity() {
+		return stateEntity;
 	}
 
 	public Long getId() {
